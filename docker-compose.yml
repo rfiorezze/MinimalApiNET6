@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "numsey#2022"
+      MSSQL_PID: Express
+    ports:
+      - "1401:1433"
+  webapiminimal:
+    image: ${DOCKER_REGISTRY-}webapiminimal
+    build:
+      context: .
+      dockerfile: WebApiMinimal/Dockerfile
